@@ -239,7 +239,7 @@
         mounted(){
         
         axios
-        .get('http://3.108.199.237/api/filterdata/'+this.$store.state.user.user_id.toString()+'/') 
+        .get('https://aec8-103-251-48-62.ngrok.io/api/filterdata/'+this.$store.state.user.user_id.toString()+'/') 
         .then((res) => (
          console.log("reponse" , res , "response data " , res.data) ,
          this.no_of_account = JSON.parse(res.data)['no_of_account'] , 
@@ -270,7 +270,7 @@
 
         async filter(key , value){
             console.log("clicked" , key , value);
-            // let url = 'http://3.108.199.237/api/filterdata/2000/' ;
+            // let url = 'https://aec8-103-251-48-62.ngrok.io/api/filterdata/2000/' ;
             // const data = new FormData();
             // data.append(key, value); 
             // console.log(data)

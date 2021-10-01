@@ -149,12 +149,12 @@ export default {
   async mounted() {
     // axios
     //   .get(
-    //     "http://3.108.199.237/api/customers/" +
+    //     "https://aec8-103-251-48-62.ngrok.io/api/customers/" +
     //       this.$store.state.user.user_id.toString() +
     //       "/"
     //   )
     //   .then((res) => (this.items = res.data));
-    let url = 'http://3.108.199.237/api/filterdata/'+this.$store.state.user.user_id.toString()+'/' ;
+    let url = 'https://aec8-103-251-48-62.ngrok.io/api/filterdata/'+this.$store.state.user.user_id.toString()+'/' ;
     const data = new FormData();
     data.append(this.$store.state.user.reqkey, this.$store.state.user.reqvalue); 
     console.log(data)
@@ -182,7 +182,7 @@ export default {
       async getcustomer(item) {
       this.$store.commit("SET_CUSTOMER_ID",item[0].appid);
        
-      // let url = 'http://3.108.199.237/api/cust/'+customer_id.toString();
+      // let url = 'https://aec8-103-251-48-62.ngrok.io/api/cust/'+customer_id.toString();
       // console.log(url)
       // let options = { url, method: "get"};
       // let {data} = await axios(options);
@@ -195,7 +195,7 @@ export default {
     // onSearch(event) {
     // this.search= event.target.value
     // console.log(this.search) 
-    //  axios.get("http://3.108.199.237/api/search/?search=" + this.search )
+    //  axios.get("https://aec8-103-251-48-62.ngrok.io/api/search/?search=" + this.search )
     // .then((res) => (this.items = res.data.results));
     // },
     onSearch() {
@@ -203,7 +203,7 @@ export default {
     // console.log(this.search) 
     this.items.length= 0 ; 
     this.pages.length= 0 ; 
-    axios.get("http://3.108.199.237/api/search/?search=" + this.$refs.searchvalue.value )
+    axios.get("https://aec8-103-251-48-62.ngrok.io/api/search/?search=" + this.$refs.searchvalue.value )
     .then((res) => (this.items = res.data.results));
     },
     logout() {
@@ -216,7 +216,7 @@ export default {
     },
     async loadNext() {
       this.currentPage += 1
-      let url = `http://3.108.199.237/api/filterdata/${this.$store.state.user.user_id.toString()}/?page=${this.currentPage}` ;
+      let url = `https://aec8-103-251-48-62.ngrok.io/api/filterdata/${this.$store.state.user.user_id.toString()}/?page=${this.currentPage}` ;
       const data = new FormData();
       data.append(this.$store.state.user.reqkey, this.$store.state.user.reqvalue); 
       console.log(data)
@@ -246,7 +246,7 @@ export default {
     },
     async loadPrev() {
         this.currentPage -= 1
-        let url = `http://3.108.199.237/api/filterdata/${this.$store.state.user.user_id.toString()}/?page=${this.currentPage}` ;
+        let url = `https://aec8-103-251-48-62.ngrok.io/api/filterdata/${this.$store.state.user.user_id.toString()}/?page=${this.currentPage}` ;
         const data = new FormData();
         data.append(this.$store.state.user.reqkey, this.$store.state.user.reqvalue); 
         console.log(data)
@@ -312,7 +312,7 @@ export default {
 		},
 
     async loaddetals(){
-      let url = `http://3.108.199.237/api/filterdata/2000/?page=${this.page}` ;
+      let url = `https://aec8-103-251-48-62.ngrok.io/api/filterdata/2000/?page=${this.page}` ;
         const data = new FormData();
         data.append(this.$store.state.user.reqkey, this.$store.state.user.reqvalue); 
         console.log(data)
@@ -341,7 +341,7 @@ export default {
   watch: {
     page: async function () {
       console.log("current page" , this.page);
-       let url = `http://3.108.199.237/api/filterdata/2000/?page=${this.page}` ;
+       let url = `https://aec8-103-251-48-62.ngrok.io/api/filterdata/2000/?page=${this.page}` ;
         const data = new FormData();
         data.append(this.$store.state.user.reqkey, this.$store.state.user.reqvalue); 
         console.log(data)

@@ -157,7 +157,7 @@ import axios from 'axios';
   },
   mounted(){
         
-        axios.get('http://3.108.199.237/api/cust/'+this.$store.state.user.customer_id.toString()+'/').then(res=> this.items = res.data[0]); 
+        axios.get('https://aec8-103-251-48-62.ngrok.io/api/cust/'+this.$store.state.user.customer_id.toString()+'/').then(res=> this.items = res.data[0]); 
   },
 methods: {
   onFileChanged (event) {
@@ -190,7 +190,7 @@ methods: {
     console.log(this.feedback)
   },
 async onUpload() {
-       let url = 'http://3.108.199.237/api/photo/'
+       let url = 'https://aec8-103-251-48-62.ngrok.io/api/photo/'
 
        const data = new FormData();
        data.append('appid', this.items.appid); 

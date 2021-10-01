@@ -167,6 +167,7 @@
 
 <script>
 import axios from "axios";
+import $ from "jquery";
 
 export default {
   name: "Login",
@@ -181,7 +182,7 @@ export default {
   methods: {
     async login() {
       try {
-        let url = "http://3.108.199.237/api/auth/";
+        let url = "https://aec8-103-251-48-62.ngrok.io/api/auth/";
 
         if (this.input.username == "") return alert("Username is required");
         if (this.input.password == "") return alert("Password is required");
@@ -212,7 +213,13 @@ export default {
         alert("Unable to log in with provided credentials.");
       }
     },
+
+  
   },
+  
+  
+
+  
   //      login: async function() {
   //         const auth = { username: this.input.username, password: this.input.password };
   //         // Correct username is 'foo' and password is 'bar'
@@ -243,6 +250,28 @@ export default {
   //     }
   // }
 };
+
+  document.addEventListener("backbutton", onBackKeyDown, false);
+  function onBackKeyDown(){
+    //Retrieve app's history
+    alert("yeah its working");
+    var history = App.getHistory();
+
+    //Check that there's only one screen in history (the current one):
+    if ( history.length === 1 ) {
+        //Check that this element is the default (home) screen:
+        var history_screen = history[0];
+        if ( TemplateTags.getDefaultRouteLink().replace('#','') === history_screen.fragment ) {
+            //Only one element in history and this element is default screen: exit app on back button:
+            navigator.app.exitApp();
+            return;
+        }
+    }
+
+    //History has at least one previous element: just go back to it:
+    navigator.app.backHistory();
+}
+
 </script>
 
 <style scoped>
