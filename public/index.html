@@ -53,4 +53,36 @@ function handleBackEvents() {
 }
 </script>
 
+<script>
+var backPresses = 0;
+var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+var maxBackPresses = 2;
+function handleBackButton(init) {
+    if (init !== true){
+        backPresses++;
+    }
+    if((!isAndroid && backPresses >= maxBackPresses) ||
+    (isAndroid && backPresses >= maxBackPresses - 1)) {
+        window.history.back();
+    }
+    else{
+        window.history.pushState({}, '');
+    }
+}
+function setupWindowHistoryTricks() {
+    handleBackButton(true);
+    window.addEventListener('popstate', handleBackButton);
+}
+
+window.addEventListener('load', function() {
+  window.history.pushState({ noBackExitsApp: true }, '')
+})
+
+window.addEventListener('popstate', function(event) {
+  if (event.state && event.state.noBackExitsApp) {
+    window.history.pushState({ noBackExitsApp: true }, '')
+  }
+})
+</script>
+
 </html>
