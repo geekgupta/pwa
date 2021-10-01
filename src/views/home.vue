@@ -351,6 +351,8 @@
         },
 
         async mounted(){
+        document.addEventListener("backbutton", this.back, false);
+
         axios
         .get('https://aec8-103-251-48-62.ngrok.io/api/filterdata/'+this.$store.state.user.user_id.toString()+'/') 
         .then((res) => (
@@ -399,7 +401,7 @@
       this.$store.commit("SET_CUSTOMER_ID",item[0].appid);
     
       
-      document.addEventListener("backbutton", this.yourCallBackFunction, false);
+      //document.addEventListener("backbutton", this.yourCallBackFunction, false);
       
       this.$router.replace({ name: "customer" });
     },
@@ -489,6 +491,9 @@
     },
     
   },
+  beforeDestroy () {
+    document.removeEventListener("backbutton", this.yourCallBackFunction);
+  }
         
 
         
