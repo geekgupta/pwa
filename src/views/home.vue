@@ -351,7 +351,18 @@
         },
 
         async mounted(){
-        document.addEventListener("backbutton", this.back, false);
+        document.addEventListener("popstate", this.back, false);
+        // window.addEventListener('load', function() {
+        //     window.history.pushState({ noBackExitsApp: true }, '');
+        //     }) ; 
+        // window.addEventListener('popstate', function(event) {
+        //     if (event.state && event.state.noBackExitsApp) {
+        //         window.history.pushState({ noBackExitsApp: true }, '');
+                 
+        //         }
+        //     this.back()
+        // })
+
 
         axios
         .get('https://aec8-103-251-48-62.ngrok.io/api/filterdata/'+this.$store.state.user.user_id.toString()+'/') 
@@ -492,7 +503,8 @@
     
   },
   beforeDestroy () {
-    document.removeEventListener("backbutton", this.yourCallBackFunction);
+    document.removeEventListener("backbutton", this.back);
+    document.removeEventListener("popstate", this.back);
   }
         
 

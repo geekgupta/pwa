@@ -54,7 +54,7 @@ function handleBackEvents() {
 </script>
 
 <script>
-var backPresses = 0;
+/*var backPresses = 0;
 var isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
 var maxBackPresses = 2;
 function handleBackButton(init) {
@@ -72,7 +72,9 @@ function handleBackButton(init) {
 function setupWindowHistoryTricks() {
     handleBackButton(true);
     window.addEventListener('popstate', handleBackButton);
-}
+}*/
+
+
 
 window.addEventListener('load', function() {
   window.history.pushState({ noBackExitsApp: true }, '')

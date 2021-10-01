@@ -156,7 +156,7 @@ import axios from 'axios';
    }
   },
   mounted(){
-        
+        document.addEventListener("popstate", this.back, false);    
         axios.get('https://aec8-103-251-48-62.ngrok.io/api/cust/'+this.$store.state.user.customer_id.toString()+'/').then(res=> this.items = res.data[0]); 
   },
 methods: {
@@ -250,6 +250,7 @@ async onUpload() {
       }
 
 }
+
   
 
  } 
