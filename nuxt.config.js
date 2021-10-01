@@ -1,0 +1,6 @@
+{
+    modules: [
+     'nuxt-device-detect',
+    ]
+  }
+  
